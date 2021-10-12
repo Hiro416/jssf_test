@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BrythonでBMIを計算する</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://cdn.rawgit.com/brython-dev/brython/3.4.0/www/src/brython.js">
+    </script>
+</head>
+
+<body onload="brython()">
+    　　　　
+    <!-- <script type="text/python" src="static/bmi.py"></script> -->
+    <h1>BrythonでBMIを計算する</h1>
+
+    <p>身長(メートル)
+        <input type="text" id="height" />
+    <p>体重(キログラム)
+        <input type="text" id="weight" />
+        <br><button id="execute">計算だ!</button>
+
+    <div id="result"></div>
+</body>
+<script type="text/python">
+
+from browser import document, alert
+
+def calc_bmi(e):
+    weight = float(document["weight"].value)
+    height = float(document["height"].value)
+
+    bmi = str(weight/(height*height))
+    rslt = document["result"]
+    rslt.text = bmi
+
+
+execute_btn = document["execute"]
+execute_btn.bind("click", calc_bmi)
+</script>
+
+</html>
